@@ -1,0 +1,51 @@
+
+-- 1. DDL (Estrutura do Banco)
+
+-- Criar a tabela de Pessoas
+CREATE TABLE Pessoa (
+  id INT PRIMARY KEY,
+  nome VARCHAR(100),
+  idade INT,
+  data_nascimento DATE
+);
+
+-- Criar a tabela de Compromissos
+CREATE TABLE Compromisso (
+  id INT PRIMARY KEY,
+  pessoa_id INT,
+  data_compromisso DATE,
+  hora_compromisso TIME,
+  FOREIGN KEY (pessoa_id) REFERENCES Pessoa(id)
+);
+
+-- Adicionar a coluna de e-mail na tabela Pesso
+ALTER TABLE Pessoa ADD email VARCHAR(100);
+
+
+-- 2. DML (Manipulação de Dados)
+
+-- Inserir dados nas tabelas
+INSERT INTO Pessoa (id, nome, idade, data_nascimento) VALUES
+(1, 'João Silva', 24, '2001-12-15'),
+(2, 'Maria Souza', 26, '1999-03-22');
+
+INSERT INTO Compromisso (id, pessoa_id, data_compromisso, hora_compromisso) VALUES
+(1, 1, '2026-09-01', '14:00:00'),
+(2, 2, '2026-09-02', '13:30:00');
+
+-- Atualizar dados (Idade da Maria e e-mails deles)
+UPDATE Pessoa SET idade = 26 WHERE id = 2;
+UPDATE Pessoa SET email = 'joao.silva@email.com' WHERE id = 1;
+UPDATE Pessoa SET email = 'maria.souza@email.com' WHERE id = 2;
+
+
+-- 3. DQL (Consulta de Dados)
+
+-- Mostrar a estrutura e as tabelas
+SHOW TABLES;
+DESCRIBE Pessoa;
+DESCRIBE Compromisso;
+
+-- Listar todos os dados cadastrados
+SELECT * FROM Pessoa;
+SELECT * FROM Compromisso;
