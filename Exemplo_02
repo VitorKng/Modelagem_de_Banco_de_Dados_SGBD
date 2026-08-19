@@ -1,0 +1,91 @@
+-- *1. DDL
+
+-- Cria a tabela de vendedores
+CREATE TABLE vendedores (
+  id_vendedor INT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  telefone VARCHAR(20) NOT NULL
+);
+
+-- Cria a tabela de clientes
+CREATE TABLE clientes (
+  id_cliente INT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100)
+);
+
+-- Cria a tabela de frutas
+CREATE TABLE frutas (
+  id_fruta INT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL
+);
+
+-- Cria a tabela de veículos
+CREATE TABLE veículos (
+  id_veiculo INT PRIMARY KEY,
+  modelo VARCHAR(100) NOT NULL
+);
+
+-- Cria a tabela de vendas
+CREATE TABLE vendas (
+  id_venda INT AUTO_INCREMENT PRIMARY KEY,
+  data_venda DATE NOT NULL,
+  quantidade INT NOT NULL,
+  id_vendedor INT NOT NULL,
+  id_cliente INT NOT NULL,
+  id_fruta INT NOT NULL,
+  FOREIGN KEY (id_vendedor) REFERENCES vendedores(id_vendedor),
+  FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
+  FOREIGN KEY (id_fruta) REFERENCES frutas(id_fruta)
+);
+
+-- **2. DML
+
+-- Insere os dados iniciais
+INSERT INTO vendedores (id_vendedor, nome, telefone)
+VALUES (1, 'João Silva', '99999-9999');
+
+INSERT INTO clientes (id_cliente, nome, email)
+VALUES (1, 'Maria Oliveira', 'maria@email.com');
+
+INSERT INTO frutas (id_fruta, nome)
+VALUES (1, 'Maçã');
+
+INSERT INTO veículos (id_veiculo, modelo)
+VALUES (3, 'Caminhão');
+
+INSERT INTO vendas (
+  data_venda, quantidade, id_vendedor, id_cliente, id_fruta
+)
+VALUES (
+  CURRENT_DATE, 10, 1, 1, 1
+);
+
+-- Atualiza o telefone do vendedor
+UPDATE vendedores
+SET telefone = '88888-8888'
+WHERE id_vendedor = 1;
+
+-- Deleta o veículo
+DELETE FROM veículos
+WHERE id_veiculo = 3;
+
+-- ***3. DQL
+
+-- Junta as tabelas para mostrar o relatório completo de cada venda
+SELECT
+  v.data_venda,
+  v.quantidade,
+  ve.nome AS vendedor,
+  c.nome AS cliente,
+  f.nome AS fruta
+FROM vendas AS v
+JOIN vendedores AS ve ON ve.id_vendedor = v.id_vendedor
+JOIN clientes AS c ON c.id_cliente = v.id_cliente
+JOIN frutas AS f ON f.id_fruta = v.id_fruta
+ORDER BY v.data_venda, ve.nome;
+
+-- Comandos utilitários
+SHOW TABLES;
+DESCRIBE vendedores;
+SELECT * FROM vendedores;
