@@ -1,0 +1,58 @@
+# Modelagem_de_Banco_de_Dados_SGBD
+## Tabela de 10 registros de Alunos e Cursos 
+
+CREATE TABLE Alunos (
+  id INT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  idade INT NOT NULL,
+  email VARCHAR(100) NOT NULL
+);
+
+
+
+CREATE TABLE Cursos (
+  id INT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  carga_horaria INT NOT NULL,
+  categoria VARCHAR(100) NOT NULL
+);
+
+
+
+INSERT INTO Alunos (id,nome,idade,email) VALUES
+(1, 'Ana Silva', 20, 'ana@email.com'),
+(2, 'Ricardo Santos', 22, 'ricardo@email.com'),
+(3, 'Carlos Oliveira', 19, 'carlos@email.com'),
+(4, 'João Souza', 25, 'joao@email.com'),
+(5, 'Paula Lima', 21, 'paula@email.com'),
+(6, 'Felipe Costa', 23, 'felipe@email.com'),
+(7, 'Gabriela Almeida', 20, 'gabriela@email.com'),
+(8, 'Henrique Rocha', 24, 'henrique@email.com'),
+(9, 'Isabela Martins', 18, 'isabela@email.com'),
+(10, 'Carla Pereira', 26, 'carla@email.com');
+
+
+INSERT INTO Cursos (id, nome, carga_horaria, categoria) VALUES
+(1, 'Banco de Dados', 40, 'Tecnologia'),
+(2, 'Programacao Java', 60, 'Tecnologia'),
+(3, 'Desenvolvimento Web', 50, 'Tecnologia'),
+(4, 'Excel Avancado', 25, 'Administracao'),
+(5, 'Marketing Digital', 25, 'Marketing'),
+(6, 'Gestao de Projetos', 30, 'Administracao'),
+(7, 'Design Grafico', 55, 'Design'),
+(8, 'Ingles Basico', 80, 'Idiomas'),
+(9, 'Python para Iniciantes', 50, 'Tecnologia'),
+(10, 'Empreendedorismo', 35, 'Negocios');
+
+
+SELECT id, nome, idade, email
+FROM Alunos
+ORDER BY nome
+LIMIT 2;
+
+
+SELECT id, nome, carga_horaria, categoria
+FROM Cursos
+WHERE categoria = 'Administracao'
+ORDER BY nome
+LIMIT 2;
