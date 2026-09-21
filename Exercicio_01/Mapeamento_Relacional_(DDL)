@@ -23,15 +23,3 @@ CREATE TABLE Emprestimo (
 
 
 
-
-### 2. Estrutura de Arquivos no Repositório
-
-No seu repositório no GitHub, você pode organizar os arquivos da seguinte forma:
-
-```text
-sistema-biblioteca-sql/
-│
-├── README.md              <-- Documentação completa acima
-├── schema.sql             <-- O código DDL em SQL (opcional, mas recomendado)
-└── docs/
-    └── modelo_conceitual.md <-- Cópia da especificação conceitual
