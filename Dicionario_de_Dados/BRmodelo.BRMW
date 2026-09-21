@@ -1,0 +1,28 @@
+
+    MORADORES ||--o{ EMPRESTIMOS : realiza
+    LIVROS ||--o| EMPRESTIMOS : contem
+
+    MORADORES {
+        int id_morador PK
+        string nome
+        string email
+        string telefone
+        string endereco
+    }
+
+    LIVROS {
+        int id_livro PK
+        string titulo
+        string autor
+        string categoria
+        string status
+    }
+
+    EMPRESTIMOS {
+        int id_emprestimo PK
+        int id_morador FK
+        int id_livro FK
+        date data_emprestimo
+        date data_devolucao_prevista
+    }
+Link do BRmodelo: https://app.brmodeloweb.com/publicview/6ab18ddad4acd21f13d748c0
