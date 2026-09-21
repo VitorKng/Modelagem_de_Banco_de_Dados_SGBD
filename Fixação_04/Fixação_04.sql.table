@@ -1,0 +1,35 @@
+### 📂 Sugestão de Organização no Repositório
+
+Para deixar o seu repositório bem estruturado no GitHub, você pode criar dois arquivos principais:
+
+```text
+modelo-logico-biblioteca/
+│
+├── README.md      <-- Cole o conteúdo acima neste arquivo
+└── schema.sql     <-- Crie este arquivo apenas com o bloco de código SQL (DDL)
+
+  
+CREATE TABLE Membros (
+    matricula INT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE
+);
+
+CREATE TABLE Livros (
+    codigo INT PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    status VARCHAR(20) DEFAULT 'Disponível'
+);
+
+CREATE TABLE Emprestimos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    livro_codigo INT NOT NULL UNIQUE,
+    membro_matricula INT NOT NULL,
+    data_retirada DATE NOT NULL,
+    data_devolucao_prevista DATE NOT NULL,
+    FOREIGN KEY (livro_codigo) REFERENCES Livros(codigo),
+    FOREIGN KEY (membro_matricula) REFERENCES Membros(matricula)
+);
+
+
