@@ -1,0 +1,38 @@
+CREATE TABLE Membro (
+    matricula INT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(120) NOT NULL
+);
+
+CREATE TABLE Livro (
+    codigo INT PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    autor VARCHAR(100) NOT NULL,
+    status VARCHAR(20) DEFAULT 'Disponível'
+);
+
+CREATE TABLE Emprestimo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    livro_codigo INT UNIQUE NOT NULL,
+    membro_matricula INT NOT NULL,
+    data_retirada DATE NOT NULL,
+    data_devolucao_prevista DATE NOT NULL,
+    FOREIGN KEY (livro_codigo) REFERENCES Livro(codigo),
+    FOREIGN KEY (membro_matricula) REFERENCES Membro(matricula)
+);
+
+
+
+---
+
+### 2. Estrutura de Arquivos no Repositório
+
+No seu repositório no GitHub, você pode organizar os arquivos da seguinte forma:
+
+```text
+sistema-biblioteca-sql/
+│
+├── README.md              <-- Documentação completa acima
+├── schema.sql             <-- O código DDL em SQL (opcional, mas recomendado)
+└── docs/
+    └── modelo_conceitual.md <-- Cópia da especificação conceitual
