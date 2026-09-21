@@ -1,15 +1,15 @@
--- ============================================================
--- Tabela de Frutas e Preços (MySQL)
--- ============================================================
+ ============================================================
+Tabela de Frutas e Preços (MySQL)
+ ============================================================
 
--- 1. Criação da tabela Frutas
+ 1. Criação da tabela Frutas
 CREATE TABLE Frutas (
     id_fruta INT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     preco_kg DECIMAL(10,2) NOT NULL
 );
 
--- 2. Inserção dos 30 registros
+ 2. Inserção dos 30 registros
 INSERT INTO Frutas (id_fruta, nome, preco_kg) VALUES
 (1, 'Maçã', 7.00),
 (2, 'Banana', 4.00),
